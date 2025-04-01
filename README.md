@@ -6,6 +6,6 @@ Test Project Exploring ActiveX DLL and VB6 Debugger
 * VB6 IDE Build to ./bin (you maybe need to re add TLB refs)
 * cmd as admin
 * regsvr32 bin/VBDebuggerMarshalling.dll
-* VS IDE may need to re add reference to VBDebuggerMarshalling
+* VS IDE will need to re add the reference to VBDebuggerMarshalling in Rrs.VB6DebuggerMarshalling.App
 * Switch to Debug
 * Build
