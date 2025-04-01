@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+	<PlatformTarget>x86</PlatformTarget>
+	<Configurations>Debug;Release;NET48</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <COMReference Include="VBDebuggerMarshalling">
+      <VersionMinor>0</VersionMinor>
+      <VersionMajor>1</VersionMajor>
+      <Guid>1d784efa-6476-48c8-8812-6b8a824a8aea</Guid>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Rrs.VB6DebuggerMarshalling.Com\Rrs.VB6DebuggerMarshalling.Com.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Interop.ADODB">
+      <HintPath>..\lib\Interop.ADODB.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

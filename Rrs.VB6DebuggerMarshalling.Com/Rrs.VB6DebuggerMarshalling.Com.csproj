@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<Version>1.1.0</Version>
+		<LangVersion>default</LangVersion>
+		<TargetFramework Condition="'$(Configuration)' == 'NET48'">net4.8</TargetFramework>
+		<TargetFramework Condition="'$(Configuration)' != 'NET48'">net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<EnableComHosting>true</EnableComHosting>
+		<PlatformTarget>x86</PlatformTarget>
+		<Configurations>Debug;Release;NET48</Configurations>
+	</PropertyGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
+		<ComHostTypeLibrary Include="$(ProjectName).tlb" Id="1" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Rrs.Ado.Com\Rrs.Ado.Com.csproj" />
+	</ItemGroup>
+
+	<Target Name="GenerateTLB" AfterTargets="PostBuildEvent" Condition="'$(TargetFramework)'== 'net4.8'">
+		<Exec Command="&quot;C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\TlbExp.exe&quot; $(TargetPath) /out:$(ProjectName).tlb" />
+	</Target>
+
+	<Target Name="RegisterComHost" AfterTargets="PostBuildEvent" Condition="'$(TargetFramework)'== 'net8.0'">
+		<Exec Command="&quot;c:\Windows\System32\regsvr32.exe&quot; /s $(OutDir)$(TargetName).comhost.dll" />
+	</Target>
+</Project>
